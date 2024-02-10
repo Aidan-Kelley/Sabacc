@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 // used for testing method
+// may change later
 public class Tester {
     
     public Tester(long tests) {
