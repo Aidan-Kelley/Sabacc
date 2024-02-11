@@ -9,6 +9,9 @@ public abstract class Player {
     private SabaccDeck deck;
 
     public abstract void makeDecision();
+
+    public abstract Strategy getStrategy();
+
     // give the player a hand of 2 cards
     public Player(SabaccDeck deck) {
         this.deck = deck;
@@ -17,16 +20,16 @@ public abstract class Player {
     }
 
     // move card from player hand to discard pile
-    public void discard(int index) {
+    protected void discard(int index) {
         deck.discard(hand.get(index)); 
         hand.remove(index);
     }
 
-    public void gain() {
+    protected void gain() {
         hand.add(deck.drawCard()); 
     }
 
-    public void swap(int index) {
+    protected void swap(int index) {
         hand.add(deck.getDiscard());
         discard(index);
     }

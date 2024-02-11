@@ -2,20 +2,34 @@ package main;
 import players.AlwaysTwoCards;
 import players.ManyCards;
 import players.Player;
+import players.Strategy;
 
 public class Game {
 
     // variable declarations
     private SabaccDeck deck = new SabaccDeck();
-    private Player[] players = {new ManyCards(deck), new AlwaysTwoCards(deck)};;
+    private Player[] players;
 
     public Game(int numberOfPlayers) {
-        // deck = new SabaccDeck();
-        // players = new Player[numberOfPlayers];
-        // for(int i = 0; i < numberOfPlayers; i++) {
-        //     players[i] = new ManyCards(deck);
-        // }        
+        players = new Player[numberOfPlayers];
+        for(int i = 0; i < numberOfPlayers; i++) {
+            players[i] = choosePlayerType();
+        }        
     }
+
+    private Player choosePlayerType() {
+        Strategy[] strategies = Strategy.values();
+        Strategy choice = strategies[(int)(Math.random()*strategies.length)];
+        choice.addPlay();
+        switch(choice) {
+            case TWO_CARDS:
+                return new AlwaysTwoCards(deck);
+            case MAX_CARDS:
+                return new ManyCards(deck);
+            default:
+                return null;
+        }
+    } 
 
     // game loop
     public int runGame() {
@@ -34,6 +48,7 @@ public class Game {
             if (Calculations.betterHand(array[winner].getHand(), array[i].getHand()) == 1)
                 winner = i;
         }
+        array[winner].getStrategy().addWin();
         return winner;
     }
 

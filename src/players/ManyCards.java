@@ -32,5 +32,9 @@ public class ManyCards extends Player {
         // draw card
         gain();
         return;
-    } 
+    }
+
+    public Strategy getStrategy() {
+        return Strategy.MAX_CARDS;
+    }
 }

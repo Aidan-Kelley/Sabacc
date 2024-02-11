@@ -38,5 +38,9 @@ public class AlwaysTwoCards extends Player {
         }
         swap(largest);
         return;
-    } 
+    }
+
+    public Strategy getStrategy() {
+        return Strategy.TWO_CARDS;
+    }
 }

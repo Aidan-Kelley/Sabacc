@@ -2,7 +2,7 @@ package main;
 public class Main {
 
     public static void main(String[] args) {
-        new Simulation(10);
+        new Simulation(5000,2);
     }
 
 }
