@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class AlwaysTwoCards extends Player implements PInterface {
-    
+public class ManyCards extends Player implements PInterface {
+
     ArrayList<Integer> hand;
     SabaccDeck deck;
-    public AlwaysTwoCards(SabaccDeck deck) {
+    public ManyCards(SabaccDeck deck) {
         super(deck);
         this.deck = deck;
         hand = super.getHand();
@@ -25,14 +25,8 @@ public class AlwaysTwoCards extends Player implements PInterface {
             }
         }
 
-        // discard highest card
-        int largest = 0; 
-        for (int i = 0; i < hand.size(); i++) { 
-            if (hand.get(i) > hand.get(largest)) {
-                largest = i;
-            }
-        }
-        swap(largest);
+        // draw card
+        gain();
         return;
     } 
 }

@@ -5,8 +5,6 @@ public class Main {
         int winner = game.runGame();
         System.out.println(game);
         System.out.println(winner + 1);
-
-        // Tester t = new Tester(10);
     }
 
 }
