@@ -1,5 +1,7 @@
 package main;
 import players.AlwaysTwoCards;
+import players.BestPlayer;
+import players.BestPlayerV2;
 import players.ManyCards;
 import players.Player;
 import players.Strategy;
@@ -26,6 +28,10 @@ public class Game {
                 return new AlwaysTwoCards(deck);
             case MAX_CARDS:
                 return new ManyCards(deck);
+            case MASTER:
+                return new BestPlayer(deck);
+            case MASTER_V2:
+                return new BestPlayerV2(deck);
             default:
                 return null;
         }
