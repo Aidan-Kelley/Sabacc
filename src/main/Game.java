@@ -1,4 +1,7 @@
-
+package main;
+import players.AlwaysTwoCards;
+import players.ManyCards;
+import players.Player;
 
 public class Game {
 

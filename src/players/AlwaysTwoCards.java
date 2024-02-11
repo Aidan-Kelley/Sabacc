@@ -1,10 +1,14 @@
+package players;
 import java.util.ArrayList;
 
-public class ManyCards extends Player {
+import main.Calculations;
+import main.SabaccDeck;
 
+public class AlwaysTwoCards extends Player {
+    
     ArrayList<Integer> hand;
     SabaccDeck deck;
-    public ManyCards(SabaccDeck deck) {
+    public AlwaysTwoCards(SabaccDeck deck) {
         super(deck);
         this.deck = deck;
         hand = super.getHand();
@@ -25,8 +29,14 @@ public class ManyCards extends Player {
             }
         }
 
-        // draw card
-        gain();
+        // discard highest card
+        int largest = 0; 
+        for (int i = 0; i < hand.size(); i++) { 
+            if (hand.get(i) > hand.get(largest)) {
+                largest = i;
+            }
+        }
+        swap(largest);
         return;
     } 
 }

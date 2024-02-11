@@ -1,4 +1,7 @@
+package players;
 import java.util.ArrayList;
+
+import main.SabaccDeck;
 
 public abstract class Player {
     
