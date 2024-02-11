@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Player {
+public class Player {
     
     private ArrayList<Integer> hand = new ArrayList<Integer>(); 
     private SabaccDeck deck;
@@ -11,8 +11,6 @@ public abstract class Player {
         hand.add(deck.drawCard());
         hand.add(deck.drawCard());
     }
-
-    public abstract void makeDecision();
 
     // move card from player hand to discard pile
     public void discard(int index) {
