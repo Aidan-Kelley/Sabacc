@@ -5,18 +5,23 @@ import main.SabaccDeck;
 
 public abstract class Player {
     
-    private ArrayList<Integer> hand = new ArrayList<Integer>(); 
+    private ArrayList<Integer> hand = new ArrayList<Integer>(5); 
     private SabaccDeck deck;
 
     public abstract void makeDecision();
 
     public abstract Strategy getStrategy();
 
-    // give the player a hand of 2 cards
     public Player(SabaccDeck deck) {
         this.deck = deck;
         hand.add(deck.drawCard());
         hand.add(deck.drawCard());
+    }
+
+    public void newHand(int size) {
+        for (int i = 0; i < size; i++) {
+            hand.set(i,deck.drawCard());
+        }
     }
 
     // move card from player hand to discard pile

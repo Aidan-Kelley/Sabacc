@@ -40,6 +40,7 @@ public class Simulation {
     private void logResults() {
         for(Strategy s : Strategy.values()) {
             System.out.printf("%s: %%%.2f%n",s,s.getWins()/(double)s.getGamesPlayed()*100);
+            // TODO: log result in results,txt with detials
         }
     }
 }

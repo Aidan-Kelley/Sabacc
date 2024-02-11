@@ -9,6 +9,7 @@ import players.Strategy;
 public class Game {
 
     // variable declarations
+    private final int AMOUNT_OF_ROUNDS = 3;
     private SabaccDeck deck = new SabaccDeck();
     private Player[] players;
 
@@ -39,10 +40,13 @@ public class Game {
 
     // game loop
     public int runGame() {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < AMOUNT_OF_ROUNDS; i++) {
             for (Player p : players) {
                 p.makeDecision();
             }
+            if((int)(Math.random()*6) == 1)
+                for (Player p : players)
+                p.newHand(p.handSize()); //discard hands if doubles
         }
         return calcWinner(players);        
     }
