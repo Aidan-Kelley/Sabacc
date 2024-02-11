@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
     
     private ArrayList<Integer> hand = new ArrayList<Integer>(); 
     private SabaccDeck deck;
 
+    public abstract void makeDecision();
     // give the player a hand of 2 cards
     public Player(SabaccDeck deck) {
         this.deck = deck;
