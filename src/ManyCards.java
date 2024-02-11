@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ManyCards extends Player implements PInterface {
+public class ManyCards extends Player {
 
     ArrayList<Integer> hand;
     SabaccDeck deck;
