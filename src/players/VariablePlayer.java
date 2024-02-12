@@ -13,8 +13,8 @@ public class VariablePlayer extends Player {
     ArrayList<Integer> hand;
     SabaccDeck deck;
     public final int STAND_AT = TwoPlayerConstants.STAND_AT;
-    public final int DISCARD_AT = TwoPlayerConstants.DISCARD_AT;
-    public int SWAP_AT;
+    public int DISCARD_AT = TwoPlayerConstants.DISCARD_AT;
+    public final int SWAP_AT = TwoPlayerConstants.SWAP_AT;
 
     public VariablePlayer(SabaccDeck deck) {
         super(deck);
@@ -24,24 +24,20 @@ public class VariablePlayer extends Player {
     }
 
     public int getVariable() {
-        return SWAP_AT += 0;
+        return DISCARD_AT += 0;
     }
 
     public static String getVariableName() {
-        return "SWAP_AT";
+        return "DISCARD_AT";
     }
     private void setConstants() {
         Random r = new Random();
-        SWAP_AT = r.nextInt(Constants.LOWER_BOUND,Constants.UPPER_BOUND);
+        DISCARD_AT = r.nextInt(Constants.LOWER_BOUND,Constants.UPPER_BOUND);
     }
     @Override
     public void makeDecision() {
         int handSum = Calculations.handSum(hand); 
-        // When to stand
-        if (Math.abs(handSum) < Math.abs(STAND_AT) || handSum == STAND_AT || handSum == -1*Math.abs(STAND_AT)) { 
-            return;
-        }
-
+        
         // when to swap
         for (int i = 0; i < hand.size(); i++) { 
             int sumIfSwap = handSum - getCard(i) + deck.getDiscard();
@@ -50,12 +46,17 @@ public class VariablePlayer extends Player {
                 return;
             }
         }
+        
+        // When to stand
+        if (Math.abs(handSum) < Math.abs(STAND_AT) || handSum == STAND_AT || handSum == -1*Math.abs(STAND_AT)) { 
+            return;
+        }
 
         // when to discard
         if(Math.abs(handSum) > Math.abs(DISCARD_AT)) {
             int largest = 0; 
-                for (int i = 0; i < hand.size(); i++) { 
-                    if (hand.get(i) > hand.get(largest)) {
+                for (int i = 1; i < hand.size(); i++) { 
+                    if (Math.abs(hand.get(i)) > Math.abs(hand.get(largest))) {
                         largest = i;
                     }
                 }
