@@ -11,11 +11,12 @@ public class Simulation {
     private Game game;
     private int winner;
     private int trials;
-
+    private int numberOfPlayers;
+    
     public Simulation(int trials, int numberOfPlayers) {
-        File file = new File("src\\logs\\games.txt");
-        file.delete();
         this.trials = trials;
+        this.numberOfPlayers = numberOfPlayers;
+        deleteGamesFile();
         for (int i = 0; i < trials; i++) {
             game = new Game(numberOfPlayers);
             winner = game.runGame();
@@ -40,7 +41,22 @@ public class Simulation {
     private void logResults() {
         for(Strategy s : Strategy.values()) {
             System.out.printf("%s: %%%.2f%n",s,s.getWins()/(double)s.getGamesPlayed()*100);
-            // TODO: log result in results,txt with detials
         }
+        try {
+            FileWriter writer = new FileWriter("src\\logs\\results.txt", true);
+            writer.write(String.format("Trials: %d%nPlayers: %d%n", trials, numberOfPlayers));
+            for(Strategy s : Strategy.values()) {
+                writer.write(String.format("%s: %%%.2f%n", s,s .getWins()/(double)s.getGamesPlayed()*100));
+            }
+            writer.write("-----------------------------------------------------------------------\n");
+            writer.close();
+        } catch(IOException e) {
+            System.out.println("Unable to write to file.");
+        }
+    }
+
+    private void deleteGamesFile() {
+        File file = new File("src\\logs\\games.txt");
+        file.delete();
     }
 }
