@@ -19,10 +19,13 @@ public class Simulation {
         this.trials = trials;
         this.numberOfPlayers = numberOfPlayers;
         deleteGamesFile();
-        for (int i = 0; i < trials; i++) {
-            game = new Game(numberOfPlayers);
-            winner = game.runGame();
-            // logGame(game.toString(), winner);
+        for(int j = 0; j < 100; j++) {
+            for (int i = 0; i < trials/100; i++) {
+                game = new Game(numberOfPlayers);
+                winner = game.runGame();
+                // logGame(game.toString(), winner);
+            }
+            System.out.println("%" + j);
         }
         logResults();
     }
@@ -41,9 +44,6 @@ public class Simulation {
     }
 
     private void logResults() {
-        for(Strategy s : Strategy.values()) {
-            System.out.printf("%s: %%%.2f%n",s,s.getWins()/(double)s.getGamesPlayed()*100);
-        }
         try {
             FileWriter writer = new FileWriter("src\\logs\\results.txt", true);
             writer.write(String.format("Testing: %s%nTrials: %d%nPlayers: %d%n", VariablePlayer.getVariableName(),trials, numberOfPlayers));
