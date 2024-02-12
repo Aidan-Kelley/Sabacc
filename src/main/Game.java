@@ -1,10 +1,12 @@
 package main;
+
 import players.AlwaysTwoCards;
 import players.BestPlayer;
 import players.BestPlayerV2;
 import players.ManyCards;
 import players.Player;
 import players.Strategy;
+import players.VariablePlayer;
 
 public class Game {
 
@@ -33,6 +35,8 @@ public class Game {
                 return new BestPlayer(deck);
             case MASTER_V2:
                 return new BestPlayerV2(deck);
+            case VARIABLE:
+                return new VariablePlayer(deck);
             default:
                 return null;
         }

@@ -4,7 +4,9 @@ public enum Strategy {
     TWO_CARDS(0,0),
     MAX_CARDS(0,0),
     MASTER_V2(0,0),
+    VARIABLE(0,0),
     MASTER(0,0);
+
 
     private int wins;
     private int gamesPlayed;
