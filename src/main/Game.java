@@ -2,7 +2,7 @@ package main;
 
 import players.AlwaysTwoCards;
 import players.ManyCards;
-import players.OptimalStrat;
+import players.TwoPlayerOptimal;
 import players.Player;
 import players.Strategy;
 
@@ -29,8 +29,8 @@ public class Game {
                 return new AlwaysTwoCards(deck);
             case MAX_CARDS:
                 return new ManyCards(deck);
-            case OPTIMAL:
-                return new OptimalStrat(deck);
+            case TWO_P_OPTIMAL:
+                return new TwoPlayerOptimal(deck);
             default:
                 return null;
         }

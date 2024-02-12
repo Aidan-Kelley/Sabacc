@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import main.Calculations;
 import main.SabaccDeck;
 
-public class OptimalStrat extends Player {
+public class TwoPlayerOptimal extends Player {
     
     ArrayList<Integer> hand;
     SabaccDeck deck;
@@ -12,7 +12,7 @@ public class OptimalStrat extends Player {
     private static final int DISCARD_AT = 9;
     private static final int SWAP_AT = 1;
 
-    public OptimalStrat(SabaccDeck deck) {
+    public TwoPlayerOptimal(SabaccDeck deck) {
         super(deck);
         this.deck = deck;
         hand = super.getHand();
@@ -21,11 +21,7 @@ public class OptimalStrat extends Player {
     @Override
     public void makeDecision() {
         int handSum = Calculations.handSum(hand); 
-        // When to stand
-        if (Math.abs(handSum) < Math.abs(STAND_AT) || handSum == STAND_AT || handSum == -1*Math.abs(STAND_AT)) { 
-            return;
-        }
-
+        
         // when to swap
         for (int i = 0; i < hand.size(); i++) { 
             int sumIfSwap = handSum - getCard(i) + deck.getDiscard();
@@ -34,7 +30,12 @@ public class OptimalStrat extends Player {
                 return;
             }
         }
-
+        
+        // When to stand
+        if (Math.abs(handSum) < Math.abs(STAND_AT) || handSum == STAND_AT || handSum == -1*Math.abs(STAND_AT)) { 
+            return;
+        }
+        
         // when to discard
         if(Math.abs(handSum) > Math.abs(DISCARD_AT)) {
             int largest = 0; 
@@ -54,6 +55,6 @@ public class OptimalStrat extends Player {
     }
 
     public Strategy getStrategy() {
-        return Strategy.OPTIMAL;
+        return Strategy.TWO_P_OPTIMAL;
     }
 }
