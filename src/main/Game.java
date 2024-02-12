@@ -1,7 +1,6 @@
 package main;
 
 import players.Player;
-import players.Strategy;
 import players.VariablePlayer;
 
 public class Game {
@@ -15,21 +14,9 @@ public class Game {
     public Game(int numberOfPlayers) {
         players = new Player[numberOfPlayers];
         for(int i = 0; i < numberOfPlayers; i++) {
-            players[i] = choosePlayerType();
+            players[i] = new VariablePlayer(deck);
         }        
     }
-
-    private Player choosePlayerType() {
-        Strategy[] strategies = Strategy.values();
-        Strategy choice = strategies[(int)(Math.random()*strategies.length)];
-        choice.addPlay();
-        switch(choice) {
-            case VARIABLE:
-                return new VariablePlayer(deck);
-            default:
-                return null;
-        }
-    } 
 
     // game loop
     public int runGame() {

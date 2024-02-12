@@ -12,7 +12,7 @@ public class VariablePlayer extends Player {
     ArrayList<Integer> hand;
     SabaccDeck deck;
     public int STAND_AT = 2;
-    public int DISCARD_AT = -9;
+    public int DISCARD_AT = 9;
     public int SWAP_AT = 1;
 
     public VariablePlayer(SabaccDeck deck) {
@@ -68,9 +68,5 @@ public class VariablePlayer extends Player {
         // else gain
         gain();
         return;
-    }
-
-    public Strategy getStrategy() {
-        return Strategy.VARIABLE;
     }
 }

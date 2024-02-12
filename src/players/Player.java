@@ -10,7 +10,6 @@ public abstract class Player {
 
     public abstract void makeDecision();
     public abstract int getVariable();
-    public abstract Strategy getStrategy();
 
     public Player(SabaccDeck deck) {
         this.deck = deck;

@@ -1,9 +1,7 @@
 package main;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import players.Strategy;
 import players.VariablePlayer;
 
 public class Simulation {
@@ -18,7 +16,6 @@ public class Simulation {
     public Simulation(int trials, int numberOfPlayers) {
         this.trials = trials;
         this.numberOfPlayers = numberOfPlayers;
-        deleteGamesFile();
         for(int j = 0; j < 100; j++) {
             for (int i = 0; i < trials/100; i++) {
                 game = new Game(numberOfPlayers);
@@ -28,19 +25,6 @@ public class Simulation {
             System.out.println("%" + j);
         }
         logResults();
-    }
-
-    private void logGame(String hands, int winner) {
-        try {
-            FileWriter writer = new FileWriter("src\\logs\\games.txt", true);
-            writer.write(hands);
-            writer.write("Winner: " + Integer.toString(winner));
-            writer.write("\n\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        } 
     }
 
     private void logResults() {
@@ -55,10 +39,5 @@ public class Simulation {
         } catch(IOException e) {
             System.out.println("Unable to write to file.");
         }
-    }
-
-    private void deleteGamesFile() {
-        File file = new File("src\\logs\\games.txt");
-        file.delete();
     }
 }
