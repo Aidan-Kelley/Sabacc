@@ -32,11 +32,12 @@ public class AlwaysTwoCards extends Player {
         // discard highest card
         int largest = 0; 
         for (int i = 0; i < hand.size(); i++) { 
-            if (hand.get(i) > hand.get(largest)) {
+            if (Math.abs(hand.get(i)) > Math.abs(hand.get(largest))) {
                 largest = i;
             }
         }
-        swap(largest);
+        discard(largest);
+        gain();
         return;
     }
 

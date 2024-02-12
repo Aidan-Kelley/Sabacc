@@ -39,8 +39,8 @@ public class TwoPlayerOptimal extends Player {
         // when to discard
         if(Math.abs(handSum) > Math.abs(DISCARD_AT)) {
             int largest = 0; 
-                for (int i = 0; i < hand.size(); i++) { 
-                    if (hand.get(i) > hand.get(largest)) {
+                for (int i = 1; i < hand.size(); i++) { 
+                    if (Math.abs(hand.get(i)) > Math.abs(hand.get(largest))) {
                         largest = i;
                     }
                 }
