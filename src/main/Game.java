@@ -1,9 +1,5 @@
 package main;
 
-import players.AlwaysTwoCards;
-import players.BestPlayer;
-import players.BestPlayerV2;
-import players.ManyCards;
 import players.Player;
 import players.Strategy;
 import players.VariablePlayer;
@@ -14,6 +10,7 @@ public class Game {
     private final int AMOUNT_OF_ROUNDS = 3;
     private SabaccDeck deck = new SabaccDeck();
     private Player[] players;
+    public static int average = 0;
 
     public Game(int numberOfPlayers) {
         players = new Player[numberOfPlayers];
@@ -27,14 +24,6 @@ public class Game {
         Strategy choice = strategies[(int)(Math.random()*strategies.length)];
         choice.addPlay();
         switch(choice) {
-            case TWO_CARDS:
-                return new AlwaysTwoCards(deck);
-            case MAX_CARDS:
-                return new ManyCards(deck);
-            case MASTER:
-                return new BestPlayer(deck);
-            case MASTER_V2:
-                return new BestPlayerV2(deck);
             case VARIABLE:
                 return new VariablePlayer(deck);
             default:
@@ -58,11 +47,14 @@ public class Game {
     // takes a list of hands and returns the index of the winning hand
     private int calcWinner(Player[] array) {
         int winner = 0;
+        final int OFFSET = Constants.LOWER_BOUND*-1;
+        Simulation.attempts[array[0].getVariable()+OFFSET]++;
         for (int i = 1; i < array.length; i++) {
+            Simulation.attempts[array[i].getVariable()+OFFSET]++;
             if (Calculations.betterHand(array[winner].getHand(), array[i].getHand()) == 1)
                 winner = i;
         }
-        array[winner].getStrategy().addWin();
+        Simulation.wins[array[winner].getVariable()+OFFSET]++;
         return winner;
     }
 

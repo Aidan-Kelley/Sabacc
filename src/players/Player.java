@@ -9,7 +9,7 @@ public abstract class Player {
     private SabaccDeck deck;
 
     public abstract void makeDecision();
-
+    public abstract int getVariable();
     public abstract Strategy getStrategy();
 
     public Player(SabaccDeck deck) {
