@@ -1,6 +1,12 @@
 package main;
 
-public class Constants {
-    public static final int LOWER_BOUND = -13;
-    public static final int UPPER_BOUND = 14;
+public final class Constants {
+    public static final int LOWER_BOUND = -2;
+    public static final int UPPER_BOUND = 3;
+
+    public final class TwoPlayerConstants {
+        public static final int STAND_AT = -2;
+        public static final int DISCARD_AT = 9;
+        public static final int SWAP_AT = 1;
+    }
 }

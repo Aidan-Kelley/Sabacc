@@ -6,14 +6,15 @@ import java.util.Random;
 import main.Calculations;
 import main.Constants;
 import main.SabaccDeck;
+import main.Constants.TwoPlayerConstants;
 
 public class VariablePlayer extends Player {
     
     ArrayList<Integer> hand;
     SabaccDeck deck;
-    public int STAND_AT = 2;
-    public int DISCARD_AT = 9;
-    public int SWAP_AT = 1;
+    public final int STAND_AT = TwoPlayerConstants.STAND_AT;
+    public final int DISCARD_AT = TwoPlayerConstants.DISCARD_AT;
+    public int SWAP_AT;
 
     public VariablePlayer(SabaccDeck deck) {
         super(deck);
@@ -23,17 +24,15 @@ public class VariablePlayer extends Player {
     }
 
     public int getVariable() {
-        return DISCARD_AT;
+        return SWAP_AT += 0;
     }
 
     public static String getVariableName() {
-        return "DISCARD_AT";
+        return "SWAP_AT";
     }
     private void setConstants() {
         Random r = new Random();
-        DISCARD_AT = r.nextInt(Constants.LOWER_BOUND,Constants.UPPER_BOUND);
-        // DISCARD_AT = r.nextInt(-10,11);
-        // SWAP_AT = r.nextInt(-2,3);
+        SWAP_AT = r.nextInt(Constants.LOWER_BOUND,Constants.UPPER_BOUND);
     }
     @Override
     public void makeDecision() {
