@@ -16,20 +16,21 @@ public class BestPlayerV2 extends Player {
 
     @Override
     public void makeDecision() {
+        int handSum = Calculations.handSum(hand); 
         // Stand if sabacc
-        if (Math.abs(Calculations.handSum(hand)) <= 2) { 
+        if (Math.abs(handSum) <= 2) { 
             return;
         }
 
         // Swap to obtain sabacc  
         for (int i = 0; i < hand.size(); i++) { 
-            if (Calculations.handSum(hand) - getCard(i) + deck.getDiscard() == 0) {  
+            if (handSum - getCard(i) + deck.getDiscard() == 0) {  
                 swap(i);
                 return;
             }
         }
 
-        if(Calculations.handSum(hand) > 10) {
+        if(handSum > 10) {
         int largest = 0; 
             for (int i = 0; i < hand.size(); i++) { 
                 if (hand.get(i) > hand.get(largest)) {

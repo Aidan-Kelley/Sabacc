@@ -16,14 +16,15 @@ public class ManyCards extends Player {
 
     @Override
     public void makeDecision() {
+        int handSum = Calculations.handSum(hand); 
         // Stand if sabacc
-        if (Calculations.handSum(hand) == 0) { 
+        if (handSum == 0) { 
             return;
         }
 
         // Swap to obtain sabacc  
         for (int i = 0; i < hand.size(); i++) { 
-            if (Calculations.handSum(hand) - getCard(i) + deck.getDiscard() == 0) {  
+            if (handSum - getCard(i) + deck.getDiscard() == 0) {  
                 swap(i);
                 return;
             }
