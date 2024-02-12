@@ -2,8 +2,8 @@ package players;
 
 public enum Strategy {
     TWO_CARDS(0,0),
-    MAX_CARDS(0,0);
-
+    MAX_CARDS(0,0),
+    OPTIMAL(0,0);
 
     private int wins;
     private int gamesPlayed;
