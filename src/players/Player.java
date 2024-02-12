@@ -8,9 +8,12 @@ public abstract class Player {
     private ArrayList<Integer> hand = new ArrayList<Integer>(5); 
     private SabaccDeck deck;
 
-    public abstract void makeDecision();
+    public abstract Decision makeDecision();
     public abstract int getVariable();
 
+    public enum Decision {
+        STAND, SWAP, DISCARD, GAIN
+    }
     public Player(SabaccDeck deck) {
         this.deck = deck;
         hand.add(deck.drawCard());
