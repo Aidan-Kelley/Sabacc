@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import main.Calculations;
 import main.SabaccDeck;
 
-public class TwoPlayerOptimal extends Player {
+public class FourPlayerOptimal extends Player {
     
     ArrayList<Integer> hand;
     SabaccDeck deck;
     private static final int STAND_AT = 1;
-    private static final int DISCARD_AT = 10;
+    private static final int DISCARD_AT = 2;
     private static final int SWAP_AT = 1;
 
-    public TwoPlayerOptimal(SabaccDeck deck) {
+    public FourPlayerOptimal(SabaccDeck deck) {
         super(deck);
         this.deck = deck;
         hand = super.getHand();
@@ -55,6 +55,6 @@ public class TwoPlayerOptimal extends Player {
     }
 
     public Strategy getStrategy() {
-        return Strategy.TWO_P_OPTIMAL;
+        return Strategy.FOUR_P_OPTIMAL;
     }
 }

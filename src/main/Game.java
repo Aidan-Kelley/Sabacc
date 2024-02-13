@@ -1,6 +1,7 @@
 package main;
 
 import players.AlwaysTwoCards;
+import players.FourPlayerOptimal;
 import players.ManyCards;
 import players.TwoPlayerOptimal;
 import players.Player;
@@ -25,12 +26,14 @@ public class Game {
         Strategy choice = strategies[(int)(Math.random()*strategies.length)];
         choice.addPlay();
         switch(choice) {
-            case TWO_CARDS:
-                return new AlwaysTwoCards(deck);
-            case MAX_CARDS:
-                return new ManyCards(deck);
+            // case TWO_CARDS:
+            //     return new AlwaysTwoCards(deck);
+            // case MAX_CARDS:
+            //     return new ManyCards(deck);
             case TWO_P_OPTIMAL:
                 return new TwoPlayerOptimal(deck);
+            case FOUR_P_OPTIMAL:
+                return new FourPlayerOptimal(deck);
             default:
                 return null;
         }
