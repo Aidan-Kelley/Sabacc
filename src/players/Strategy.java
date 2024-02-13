@@ -1,8 +1,6 @@
 package players;
 
 public enum Strategy {
-    // TWO_CARDS(0,0),
-    // MAX_CARDS(0,0),
     TWO_P_OPTIMAL(0,0),
     FOUR_P_OPTIMAL(0,0);
 

@@ -1,8 +1,6 @@
 package main;
 
-import players.AlwaysTwoCards;
 import players.FourPlayerOptimal;
-import players.ManyCards;
 import players.TwoPlayerOptimal;
 import players.Player;
 import players.Strategy;
@@ -43,7 +41,7 @@ public class Game {
     public int runGame() {
         for(int i = 0; i < AMOUNT_OF_ROUNDS; i++) {
             for (Player p : players) {
-                p.makeDecision();
+                p.makeDecision(p.STAND_AT, p.SWAP_AT, p.DISCARD_AT);
             }
             if((int)(Math.random()*6) == 1)
                 for (Player p : players)
